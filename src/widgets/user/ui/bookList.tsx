@@ -1,4 +1,4 @@
-import {useState} from "react";
+import styles from "./bookList.module.css"
 
 type Book = {
     id: string;
@@ -14,9 +14,8 @@ type Book = {
 };
 
 export const BookList = ({books}: { books: Book[] }) => {
-    console.log(books);
     return (
-        <ul>
+        <ul className={styles.cards}>
             {books.map((book) => (
                 <BookItem key={book.id} book={book}/>
             ))}
@@ -28,17 +27,19 @@ const BookItem = ({book}: { book: Book }) => {
     const info = book.volumeInfo;
     return (
         <>
-            <li>
+            <li className={styles.book}>
                 <img src={info.imageLinks?.thumbnail
                     && info.imageLinks?.smallThumbnail
                     || "https://placeholdit.com/400x500/dddddd/999999?text=No+image"} alt={info.title}/>
-                <h2>{info.title ?? "No title"}</h2>
-                <p>
-                    {info.authors ? info.authors.join(", ") : "Unknown"}
-                </p>
-                <p>
-                    {info.description ? info.description.slice(0, 300) + "..." : "No description"}
-                </p>
+                <div className={styles.info}>
+                    <h2 className={styles.title}>{info.title ?? "No title"}</h2>
+                    <p className={styles.author}>
+                        {info.authors ? info.authors.join(", ") : "Unknown"}
+                    </p>
+                    <p className={styles.desc}>
+                        {info.description ? info.description.slice(0, 100) + "..." : "No description"}
+                    </p>
+                </div>
             </li>
         </>
     )
