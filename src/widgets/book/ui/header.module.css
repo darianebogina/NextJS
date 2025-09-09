@@ -11,3 +11,14 @@
     text-decoration: none;
     font-size: 1.6rem;
 }
+
+@media (max-width: 424px) {
+    .header{
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+    .search {
+        font-size: 1rem;
+        max-width: 18rem;
+    }
+}

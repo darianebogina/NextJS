@@ -9,11 +9,11 @@ export const Header = () => {
 
     return (
         <div className={styles.header}>
-            <Link href="/home" className={styles.logo}>BookShelves</Link>
-            <div>
+            <Link href="/" className={styles.logo}>BookShelves</Link>
+            <div className={styles.search}>
                 <input type="text" value={query} placeholder="Type here..."
                        onChange={(e) => setQuery(e.target.value)} />
-                <button onClick={() => router.push(`/home/?q=${query}`)}>&#128269;</button>
+                <button onClick={() => router.push(`/?search=${query}`)}>&#128269;</button>
             </div>
         </div>
     )
