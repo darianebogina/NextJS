@@ -1,18 +1,8 @@
-import styles from "./bookList.module.css"
+import {Book} from "@/shared";
+import styles from "@/widgets/bookList/ui/bookList.module.css";
 import Link from "next/link";
-import {Book} from "@/entities/book/model/types";
 
-export const BookList = ({books}: { books: Book[] }) => {
-    return (
-        <ul className={styles.cards}>
-            {books.map((book) => (
-                <BookItem key={book.id} book={book}/>
-            ))}
-        </ul>
-    )
-};
-
-export const BookItem = ({book}: { book: Book}) => {
+export const BookItem = ({book}: { book: Book }) => {
     const info = book.volumeInfo;
     return (
         <>

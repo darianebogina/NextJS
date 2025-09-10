@@ -1,8 +1,6 @@
-import {BookList} from "@/widgets/book/ui/bookList";
-import {Header} from "@/widgets/book/ui/header";
+import {Header, BookList} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
-import {Book} from "@/entities/book/model/types";
-import {fetchBooks} from "@/shared/api/books";
+import {Book, fetchBooks} from "@/shared";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const query = String(context.query.search ?? "Javascript");

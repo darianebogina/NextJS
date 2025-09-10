@@ -1,5 +1,5 @@
-import {BookExtended} from "@/entities/book/model/types";
-import styles from "@/widgets/book/ui/book.module.css";
+import {BookExtended} from "@/shared";
+import styles from "@/widgets/bookInfo/ui/book.module.css";
 
 export const BookInfo = ({book}: { book: BookExtended }) => {
     const info = book.volumeInfo;

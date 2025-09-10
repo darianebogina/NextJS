@@ -1,8 +1,6 @@
-import {Header} from "@/widgets/book/ui/header";
+import {Header, BookInfo} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
-import {BookExtended} from "@/entities/book/model/types";
-import {fetchBook} from "@/shared/api/books";
-import {BookInfo} from "@/widgets/book/ui/BookInfo";
+import {BookExtended, fetchBook} from "@/shared";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const volumeId = context.params!.id;
