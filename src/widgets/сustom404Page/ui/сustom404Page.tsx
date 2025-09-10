@@ -6,7 +6,7 @@ export const Custom404Page = () => {
             <div className={styles.content}>
                 <h1>404</h1>
                 <p>Sorry, page not found</p>
-                <a href="/" >Back to main page</a>
+                <a href="/">Back to main page</a>
             </div>
         </div>
     )
