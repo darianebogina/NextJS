@@ -2,7 +2,6 @@ import Link from 'next/link'
 import {useRouter} from "next/router";
 import {useState} from "react";
 import styles from "./header.module.css"
-import {deleteCookie, setCookie} from "@/shared";
 
 export const Header = ({language}: { language: string}) => {
     const router = useRouter();
@@ -19,11 +18,11 @@ export const Header = ({language}: { language: string}) => {
             </div>
             <div className={styles.session}>
                 <button title={language === "ru" ? "Начать сессию" : "Start session"}
-                        onClick={() => setCookie("session_id", (Math.random() * 100).toString())}>🟢
+                        onClick={() => router.push('/?action=set')}>🟢
                 </button>
                 <Link href="/user/profile">{language === "ru" ? "Профиль" : "Profile"}</Link>
                 <button title={language === "ru" ? "Закрыть сессию" : "End session"}
-                        onClick={() => deleteCookie("session_id")}>🔴</button>
+                        onClick={() => router.push('/?action=delete')}>🔴</button>
             </div>
         </div>
     )

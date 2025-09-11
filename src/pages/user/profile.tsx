@@ -1,7 +1,8 @@
 import {GetServerSidePropsContext} from "next";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-    const sessionId = context.req.headers.cookie.split("=")[1];
+    const sessionId = context.req.headers.cookie?.includes("session_id=") &&
+                        context.req.headers.cookie.split("=")[1];
 
     if (!sessionId) {
         return {
