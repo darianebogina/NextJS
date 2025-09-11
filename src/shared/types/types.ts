@@ -26,3 +26,5 @@ export type BookExtended = {
         publishedDate?: string;
     };
 };
+
+export type QueryMode = "compact" | "full";
