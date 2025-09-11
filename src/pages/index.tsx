@@ -1,4 +1,4 @@
-import {Header, BookList} from "@/widgets";
+import {Header, BookList, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
 import {Book, fetchBooks, getSSRProps, QueryMode} from "@/shared";
 
@@ -16,8 +16,9 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 export default function HomePage({ books, language, modeQuery}: { books: Book[], language: string, modeQuery: QueryMode }) {
     return (
         <>
-            <Header language={language} modeQuery={modeQuery}></Header>
+            <Header language={language}></Header>
             <BookList books={books} modeQuery={modeQuery}/>
+            <Footer language={language}></Footer>
         </>
     )
 }

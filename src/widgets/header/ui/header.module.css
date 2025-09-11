@@ -11,24 +11,24 @@
     font-size: 1.6rem;
 }
 
-.info {
+.session {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 0.8rem;
 }
 
-.info p {
-    margin: 0;
+.session button {
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.api {
-    margin: 0;
-    color: rgba(2, 49, 36, 0.7);
+.session a {
     text-decoration: none;
-    font-size: 1rem;
+    color: black;
+    cursor: pointer;
 }
-
 
 @media (max-width: 650px) {
     .header{

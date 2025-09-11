@@ -1,4 +1,4 @@
-import {Header, BookInfo} from "@/widgets";
+import {Header, BookInfo, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
 import {BookExtended, fetchBook, getSSRProps, QueryMode} from "@/shared";
 
@@ -24,6 +24,7 @@ export default function BookPage({book, language, modeQuery}: { book: BookExtend
         <>
             <Header language={language} modeQuery={modeQuery}/>
             <BookInfo book={book} modeQuery={modeQuery}/>
+            <Footer language={language}/>
         </>
     );
 };

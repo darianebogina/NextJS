@@ -2,10 +2,9 @@ import Link from 'next/link'
 import {useRouter} from "next/router";
 import {useState} from "react";
 import styles from "./header.module.css"
+import {deleteCookie, setCookie} from "@/shared";
 
-type queryMode = "compact" | "full";
-
-export const Header = ({language, modeQuery}: { language: string, modeQuery: queryMode }) => {
+export const Header = ({language}: { language: string}) => {
     const router = useRouter();
     const [query, setQuery] = useState("");
 
@@ -18,14 +17,14 @@ export const Header = ({language, modeQuery}: { language: string, modeQuery: que
                        onChange={(e) => setQuery(e.target.value)}/>
                 <button onClick={() => router.push(`/?search=${query}`)}>&#128269;</button>
             </div>
-            {modeQuery === "full" &&
-                <div className={styles.info}>
-                    {language === "ru" ?
-                        (<p> Привет! Эта страница использует </p>) : (<p> Hello! This page uses </p>)}
-                    <a className={styles.api}
-                       href={"https://developers.google.com/books/docs/v1/reference/bookshelves?hl=ru"}> Google Books
-                        APIs</a>
-                </div>}
+            <div className={styles.session}>
+                <button title={language === "ru" ? "Начать сессию" : "Start session"}
+                        onClick={() => setCookie("session_id", (Math.random() * 100).toString())}>🟢
+                </button>
+                <Link href="/user/profile">{language === "ru" ? "Профиль" : "Profile"}</Link>
+                <button title={language === "ru" ? "Закрыть сессию" : "End session"}
+                        onClick={() => deleteCookie("session_id")}>🔴</button>
+            </div>
         </div>
     )
 }
