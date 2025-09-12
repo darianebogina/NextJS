@@ -22,7 +22,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 export default function BookPage({book, language, modeQuery}: { book: BookExtended, language: string, modeQuery: QueryMode }) {
     return (
         <>
-            <Header language={language} modeQuery={modeQuery}/>
+            <Header language={language}/>
             <BookInfo book={book} modeQuery={modeQuery}/>
             <Footer language={language}/>
         </>

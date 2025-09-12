@@ -17,7 +17,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
 
     return {
-        props: {books, language, modeQuery, cookies: context.req.headers.cookie}
+        props: {books, language, modeQuery, cookies: context.req.headers.cookie || null}
     };
 };
 
