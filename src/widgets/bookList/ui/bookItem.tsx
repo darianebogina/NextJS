@@ -2,15 +2,19 @@ import {Book} from "@/shared";
 import styles from "@/widgets/bookList/ui/bookList.module.css";
 import Link from "next/link";
 
-export const BookItem = ({book}: { book: Book }) => {
+type queryMode = "compact" | "full";
+
+export const BookItem = ({book, modeQuery}: { book: Book, modeQuery: queryMode }) => {
     const info = book.volumeInfo;
     return (
         <>
             <li className={styles.book}>
                 <Link href={`/book/${book.id}`} className={styles.bookLink}>
-                    <img src={info.imageLinks?.thumbnail
-                        && info.imageLinks?.smallThumbnail
-                        || "https://placeholdit.com/400x500/dddddd/999999?text=No+image"} alt={info.title}/>
+                    {modeQuery === "full" &&
+                        <img src={info.imageLinks?.thumbnail
+                            && info.imageLinks?.smallThumbnail
+                            || "https://placeholdit.com/400x500/dddddd/999999?text=No+image"} alt={info.title}/>
+                    }
                     <div className={styles.info}>
                         <h2 className={styles.title}>{info.title ?? "No title"}</h2>
                         <p className={styles.author}>

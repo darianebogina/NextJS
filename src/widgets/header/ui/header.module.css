@@ -1,8 +1,7 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
+    justify-content: space-around;
     background-color: rgb(242, 240, 223);
 }
 
@@ -12,7 +11,26 @@
     font-size: 1.6rem;
 }
 
-@media (max-width: 424px) {
+.session {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.session button {
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.session a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
     .header{
         flex-direction: column;
         gap: 0.1rem;
@@ -20,5 +38,6 @@
     .search {
         font-size: 1rem;
         max-width: 18rem;
+        margin: 1rem;
     }
 }

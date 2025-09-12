@@ -11,7 +11,7 @@
 .book {
     width: 100%;
     max-width: 15.1rem;
-    height: 25.6rem;
+    height: fit-content;
     padding: 0.3rem;
     border-radius: 1.25rem;
     background: rgb(240, 215, 203);

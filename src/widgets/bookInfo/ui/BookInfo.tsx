@@ -1,16 +1,20 @@
 import {BookExtended} from "@/shared";
 import styles from "@/widgets/bookInfo/ui/book.module.css";
 
-export const BookInfo = ({book}: { book: BookExtended }) => {
+type queryMode = "compact" | "full";
+
+export const BookInfo = ({book, modeQuery}: { book: BookExtended, modeQuery: queryMode  }) => {
     const info = book.volumeInfo;
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <img src={info.imageLinks?.thumbnail
-                    && info.imageLinks?.smallThumbnail
-                    || "https://placeholdit.com/400x500/dddddd/999999?text=No+image"}
-                     className={styles.imageWrapper}
-                     alt={info.title}/>
+                {modeQuery === "full" &&
+                    <img src={info.imageLinks?.thumbnail
+                        && info.imageLinks?.smallThumbnail
+                        || "https://placeholdit.com/400x500/dddddd/999999?text=No+image"}
+                         className={styles.imageWrapper}
+                         alt={info.title}/>
+                }
                 <div className={styles.info}>
                     <h2>{info.title ?? "No title"}</h2>
                     <p>

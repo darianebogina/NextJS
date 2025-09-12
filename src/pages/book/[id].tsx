@@ -1,11 +1,12 @@
-import {Header, BookInfo} from "@/widgets";
+import {Header, BookInfo, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
-import {BookExtended, fetchBook} from "@/shared";
+import {BookExtended, fetchBook, getSSRProps, QueryMode} from "@/shared";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const volumeId = context.params!.id;
 
     const book = await fetchBook(String(volumeId));
+    const { language, modeQuery } = getSSRProps(context);
 
     if (!book || !book.volumeInfo) {
         return {
@@ -14,15 +15,16 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
 
     return {
-        props: {book},
+        props: {book, language, modeQuery},
     };
 };
 
-export default function BookPage({book}: { book: BookExtended }) {
+export default function BookPage({book, language, modeQuery}: { book: BookExtended, language: string, modeQuery: QueryMode }) {
     return (
         <>
-            <Header/>
-            <BookInfo book={book} />
+            <Header language={language} modeQuery={modeQuery}/>
+            <BookInfo book={book} modeQuery={modeQuery}/>
+            <Footer language={language}/>
         </>
     );
 };
