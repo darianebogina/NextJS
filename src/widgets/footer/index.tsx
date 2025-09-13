@@ -1,4 +1,4 @@
-import styles from "@/widgets/footer/ui/footer.module.css";
+import styles from "./footer.module.css";
 
 export const Footer = ({language}: { language: string }) => {
     return (

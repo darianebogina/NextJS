@@ -1,27 +1,6 @@
 import {GetServerSidePropsContext} from "next";
-import {useState} from "react";
-
-type LogItem = {
-    url: string
-    time: string
-    extra?: any
-}
-
-const fetchLogs = async (): Promise<LogItem[]> => {
-    const res = await fetch("http://localhost:3000/api/logs");
-    return await res.json();
-}
-
-const sendLog = async (url:string, method:string) => {
-    await fetch("http://localhost:3000/api/logs", {
-        method: 'PUT',
-        body: JSON.stringify({
-            url: url,
-            time: new Date().toString(),
-            extra: {method: method},
-        })
-    })
-}
+import {fetchLogs, sendLog} from "@/shared";
+import {Profile} from "@/widgets/profile"
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const sessionId = context.req.headers.cookie?.includes("session_id=") &&
@@ -48,27 +27,8 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     };
 };
 
-export default function Profile({sessionId, url, method}: {sessionId: string, url: string, method: string}) {
-    const [logs, setLogs] = useState<LogItem[]>([])
-
-    const fetchAndSetLogs = async () => {
-        setLogs(await fetchLogs());
-    }
-
-    const sendLogAndUpdate = async () => {
-        await sendLog(url, method);
-        await fetchAndSetLogs();
-    }
-
-    console.log(logs);
-
+export default function ProfilePage({sessionId, url, method}: { sessionId: string, url: string, method: string }) {
     return (
-        <>
-            <p>:)</p>
-            <button onClick={() => fetchAndSetLogs()}>Логи</button>
-            <button onClick={() => sendLogAndUpdate()}>Отправить лог</button>
-            <p>`Session id: ${sessionId}`</p>
-            <p>{logs.toString()}</p>
-        </>
+        <Profile sessionId={sessionId} url={url} method={method}/>
     )
 }

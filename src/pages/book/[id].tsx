@@ -1,6 +1,8 @@
-import {Header, BookInfo, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
 import {BookExtended, fetchBook, getSSRProps, QueryMode} from "@/shared";
+import {Header} from "@/widgets/header";
+import {BookInfo} from "@/widgets/book-info";
+import {Footer} from "@/widgets/footer";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const volumeId = context.params!.id;

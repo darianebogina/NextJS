@@ -28,3 +28,9 @@ export type BookExtended = {
 };
 
 export type QueryMode = "compact" | "full";
+
+export type LogItem = {
+    url: string
+    time: string
+    extra?: any
+}

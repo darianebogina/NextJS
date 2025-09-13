@@ -9,7 +9,7 @@ export const Header = ({language}: { language: string}) => {
 
     return (
         <div className={styles.header}>
-            <Link href="/" className={styles.logo}>BookShelves</Link>
+            <Link href="/public" className={styles.logo}>BookShelves</Link>
             <div className={styles.search}>
                 <input type="text" value={query}
                        placeholder={language === "ru" ? "Введите название..." : "Type here..."}

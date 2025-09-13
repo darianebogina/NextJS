@@ -1,4 +1,4 @@
-import {Book, BookExtended} from "@/shared";
+import {Book, BookExtended} from "./types";
 
 export const fetchBooks = async (query: string): Promise<Book[]> => {
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);

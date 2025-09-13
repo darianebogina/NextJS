@@ -1,9 +1,7 @@
-import {BookExtended} from "@/shared";
-import styles from "@/widgets/bookInfo/ui/book.module.css";
+import {BookExtended, QueryMode} from "@/shared";
+import styles from "./book.module.css";
 
-type queryMode = "compact" | "full";
-
-export const BookInfo = ({book, modeQuery}: { book: BookExtended, modeQuery: queryMode  }) => {
+export const BookInfo = ({book, modeQuery}: { book: BookExtended, modeQuery: QueryMode  }) => {
     const info = book.volumeInfo;
     return (
         <div className={styles.container}>

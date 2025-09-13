@@ -1,10 +1,8 @@
-import {Book} from "@/shared";
-import styles from "@/widgets/bookList/ui/bookList.module.css";
+import {Book, QueryMode} from "@/shared";
+import styles from "./book-item.module.css";
 import Link from "next/link";
 
-type queryMode = "compact" | "full";
-
-export const BookItem = ({book, modeQuery}: { book: Book, modeQuery: queryMode }) => {
+export const BookItem = ({book, modeQuery}: { book: Book, modeQuery: QueryMode }) => {
     const info = book.volumeInfo;
     return (
         <>

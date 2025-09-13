@@ -1,5 +1,5 @@
 import {GetServerSidePropsContext} from "next";
-import {QueryMode} from "@/shared";
+import {QueryMode} from "./types";
 
 const parseLanguage = (headerLanguage: string) => {
     return headerLanguage.split(",")[0].split(';')[0] || 'en';

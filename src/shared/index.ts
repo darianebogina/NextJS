@@ -1,4 +1,5 @@
-export type {Book, BookExtended, QueryMode} from "./types/types";
-export {fetchBooks, fetchBook} from "./api/books";
-export {getSSRProps} from "./commonSSRProps/getCommonSSRProps"
-export {addLog, getLogs} from "./lru-cache/lru-cache"
+export type {Book, BookExtended, QueryMode, LogItem} from "./types";
+export {fetchBooks, fetchBook} from "./books";
+export {getSSRProps} from "./get-common-SSR-props"
+export {addLog, getLogs} from "./lru-cache"
+export {fetchLogs, sendLog} from "./api"
