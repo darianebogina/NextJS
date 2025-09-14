@@ -20,8 +20,16 @@ export const Profile = ({sessionId, url, method}: {sessionId: string, url: strin
             <p>:)</p>
             <button onClick={() => fetchAndSetLogs()}>Logs</button>
             <button onClick={() => sendLogAndUpdate()}>Send log</button>
-            <p>`Session id: ${sessionId}`</p>
-            <p>{logs.map(item => item.toString()+ "\n")}</p>
+            <p>Session id: {sessionId}</p>
+            <ul>
+                {logs.map((item, index) => (
+                    <li key={index}>
+                        <p>Time: {item.time}</p>
+                        <p>Method: {item.extra?.method}</p>
+                        <p>URL: {item.url}</p>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
