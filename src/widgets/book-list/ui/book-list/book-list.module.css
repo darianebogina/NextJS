@@ -1,0 +1,9 @@
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0;
+    background-color: rgba(146, 185, 142, 0.56);
+}

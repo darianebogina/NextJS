@@ -1,4 +1,4 @@
-import styles from "@/widgets/сustom404Page/ui/404.module.css";
+import styles from "./404.module.css";
 
 export const Custom404Page = () => {
     return (

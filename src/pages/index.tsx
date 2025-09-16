@@ -1,6 +1,8 @@
-import {Header, BookList, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
 import {Book, fetchBooks, getSSRProps, QueryMode} from "@/shared";
+import {Header} from "@/widgets/header";
+import {BookList} from "@/widgets/book-list/ui";
+import {Footer} from "@/widgets/footer";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const query = String(context.query.search ?? "Javascript");
@@ -17,7 +19,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
 
     return {
-        props: {books, language, modeQuery, cookies: context.req.headers.cookie}
+        props: {books, language, modeQuery, cookies: context.req.headers.cookie || null}
     };
 };
 

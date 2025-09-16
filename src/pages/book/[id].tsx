@@ -1,6 +1,8 @@
-import {Header, BookInfo, Footer} from "@/widgets";
 import {GetServerSidePropsContext} from "next";
 import {BookExtended, fetchBook, getSSRProps, QueryMode} from "@/shared";
+import {Header} from "@/widgets/header";
+import {BookInfo} from "@/widgets/book-info";
+import {Footer} from "@/widgets/footer";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const volumeId = context.params!.id;
@@ -22,7 +24,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 export default function BookPage({book, language, modeQuery}: { book: BookExtended, language: string, modeQuery: QueryMode }) {
     return (
         <>
-            <Header language={language} modeQuery={modeQuery}/>
+            <Header language={language}/>
             <BookInfo book={book} modeQuery={modeQuery}/>
             <Footer language={language}/>
         </>
