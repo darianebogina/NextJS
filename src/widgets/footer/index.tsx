@@ -1,6 +1,6 @@
 import styles from "./footer.module.css";
 
-export const Footer = ({language}: { language: string }) => {
+export const Footer = ({language, nonce}: { language: string, nonce: string }) => {
     return (
         <div className={styles.info}>
             {language === "ru" ?
@@ -8,6 +8,11 @@ export const Footer = ({language}: { language: string }) => {
             <a className={styles.api}
                href={"https://developers.google.com/books/docs/v1/reference/bookshelves?hl=ru"}> Google Books
                 APIs</a>
+
+                <script
+                    nonce={nonce}
+                    dangerouslySetInnerHTML={{ __html: `console.log("footer script")` }}
+                />
         </div>
     );
 }

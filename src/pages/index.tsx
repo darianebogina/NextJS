@@ -18,21 +18,24 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         context.res.setHeader(`Set-Cookie`, `session_id=; max-age=0`)
     }
 
+    const nonce = context.req.headers['x-nonce']!;
+
     return {
-        props: {books, language, modeQuery, cookies: context.req.headers.cookie || null}
+        props: {nonce, books, language, modeQuery, cookies: context.req.headers.cookie || null}
     };
 };
 
-export default function HomePage({books, language, modeQuery}: {
+export default function HomePage({books, language, modeQuery, nonce}: {
     books: Book[],
     language: string,
-    modeQuery: QueryMode
+    modeQuery: QueryMode,
+    nonce: string
 }) {
     return (
         <>
             <Header language={language}></Header>
-            <BookList books={books} modeQuery={modeQuery}/>
-            <Footer language={language}></Footer>
+            <BookList books={books} modeQuery={modeQuery} />
+            <Footer language={language} nonce={nonce}></Footer>
         </>
     )
 }

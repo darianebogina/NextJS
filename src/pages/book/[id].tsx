@@ -8,7 +8,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     const volumeId = context.params!.id;
 
     const book = await fetchBook(String(volumeId));
-    const { language, modeQuery } = getSSRProps(context);
+    const {language, modeQuery} = getSSRProps(context);
 
     if (!book || !book.volumeInfo) {
         return {
@@ -16,17 +16,23 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         };
     }
 
+    const nonce = context.req.headers['x-nonce']!;
     return {
-        props: {book, language, modeQuery},
+        props: {nonce, book, language, modeQuery},
     };
 };
 
-export default function BookPage({book, language, modeQuery}: { book: BookExtended, language: string, modeQuery: QueryMode }) {
+export default function BookPage({book, language, modeQuery, nonce}: {
+    book: BookExtended,
+    language: string,
+    modeQuery: QueryMode,
+    nonce: string
+}) {
     return (
         <>
             <Header language={language}/>
             <BookInfo book={book} modeQuery={modeQuery}/>
-            <Footer language={language}/>
+            <Footer language={language} nonce={nonce}/>
         </>
     );
 };
