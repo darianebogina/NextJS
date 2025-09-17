@@ -8,16 +8,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'img3.akspic.ru',
-        port: '',
         pathname: '/previews/**',
-        search: ''
       },
       {
         protocol: 'https',
         hostname: 'img2.akspic.ru',
-        port: '',
         pathname: '/previews/**',
-        search: ''
       },
     ],
   },
