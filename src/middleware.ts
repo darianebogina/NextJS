@@ -4,8 +4,8 @@ export function middleware(request: NextRequest) {
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
     const cspHeader = `
     default-src 'self';
-    script-src 'nonce-${nonce}' 'unsafe-eval';
-    img-src 'self' http:;
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval';
+    img-src 'self' data: http:;
     style-src 'self' 'unsafe-inline';
     `.replace(/\s{2,}/g, ' ').trim();
 
