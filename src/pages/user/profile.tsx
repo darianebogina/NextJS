@@ -1,6 +1,7 @@
 import {GetServerSidePropsContext} from "next";
 import {fetchLogs, sendLog} from "@/shared";
 import {Profile} from "@/widgets/profile"
+import {ImageOptimize} from "@/widgets/img-optimize-day";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const sessionId = context.req.headers.cookie?.includes("session_id=") &&
@@ -29,6 +30,9 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 
 export default function ProfilePage({sessionId, url, method}: { sessionId: string, url: string, method: string }) {
     return (
-        <Profile sessionId={sessionId} url={url} method={method}/>
+        <>
+            <ImageOptimize/>
+            <Profile sessionId={sessionId} url={url} method={method}/>
+        </>
     )
 }
